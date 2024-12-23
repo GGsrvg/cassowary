@@ -22,8 +22,38 @@ public struct Variable: Hashable, Comparable {
         return Variable(tag: "z\(number)")
     }
     
-    static func createF() -> Variable {
-        return Variable(tag: "F")
+    static public func * (variable: Variable, multiplier: Decimal) -> Expression {
+        return .plus([
+            .variable(multiplier: multiplier, variable)
+        ])
+    }
+    
+    static public func * (variable: Variable, multiplier: Int) -> Expression {
+        return variable * Decimal(multiplier)
+    }
+    
+    static public func * (variable: Variable, multiplier: Float) -> Expression {
+        return variable * Decimal(Double(multiplier))
+    }
+    
+    static public func * (variable: Variable, multiplier: Double) -> Expression {
+        return variable * Decimal(multiplier)
+    }
+    
+    static public func * (multiplier: Decimal, variable: Variable) -> Expression {
+        return variable * multiplier
+    }
+    
+    static public func * (multiplier: Int, variable: Variable) -> Expression {
+        return variable * Decimal(multiplier)
+    }
+    
+    static public func * (multiplier: Float, variable: Variable) -> Expression {
+        return variable * Decimal(Double(multiplier))
+    }
+    
+    static public func * (multiplier: Double, variable: Variable) -> Expression {
+        return variable * Decimal(multiplier)
     }
 }
 

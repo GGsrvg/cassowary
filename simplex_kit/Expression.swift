@@ -99,11 +99,11 @@ public enum Expression {
         }
     }
 
-    static func + (lhs: Expression, rhs: Expression) -> Expression {
+    static public func + (lhs: Expression, rhs: Expression) -> Expression {
         return .plus([lhs, rhs]).optimize()
     }
     
-    static func * (l: Expression, r: Decimal) -> Expression {
+    static public func * (l: Expression, r: Decimal) -> Expression {
         switch l {
         case let .number(decimal):
             return .number(decimal * r)

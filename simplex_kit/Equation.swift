@@ -27,17 +27,7 @@ public struct Equation {
     func canonical(i: Int? = nil) -> (Equation, Variable?) {
         switch relation {
         case .equal:
-            let basis = self.left.getVariablesAndMultiplier().first { (key: Variable, value: Decimal) in
-                value == 1
-            }.map(\.key)
-            guard let basis else {
-                return (self, nil)
-            }
-            return (
-                self,
-                basis
-            )
-            
+            return (self, nil)
         case .lessOrEqual:
             let basis = Variable.createS(i ?? 1)
             let exp = Expression.variable(multiplier: 1, basis)

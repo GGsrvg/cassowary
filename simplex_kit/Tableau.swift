@@ -7,11 +7,7 @@
 
 import Foundation
 
-/*
- slack      - дополнительная (избыточные)
- artificial - искуственная
- */
-public struct Tableau { //}: Tableau {
+struct Tableau {
     
     let columns: [Variable]
     /// last column from `columns`
@@ -40,6 +36,12 @@ public struct Tableau { //}: Tableau {
         assert(rows.count == table.count)
         assert(columns.count == table[0].count)
         
+#if DEBUG
+        print("Table: \t\(table.map { "\($0)" }.joined(separator:"\n\t\t"))")
+        print("Columns: \(columns)")
+        print("Rows: \(rows)")
+#endif
+        
         self.columns = columns
         self.bColumn = bColumn
         self.rows = rows
@@ -49,84 +51,17 @@ public struct Tableau { //}: Tableau {
         self.variablesForAnswer = variablesForAnswer
     }
     
-    public init(
-        formula: Expression,
-        goal: Goal = .max,
-        equations: [Equation]
-    ) {
-        let zRow = Variable(tag: "Z")
-        let bColumn = Variable(tag: "B")
+    func pivot() throws(SimplexError) -> Tableau {
+        var table = self.table
         
-        var __i = 0
-        var rows: [Variable?] = []
-        let expressions: [Equation] = equations
-            .map {
-                __i += 1
-                let result = $0.canonical(i: __i)
-                rows.append(result.1)
-                return result.0
-            }
-        rows.append(zRow)
-        
-        let columns: [Variable] = expressions
-            .reduce(Set<Variable>(), { partialResult, equation in
-                return partialResult.union(equation.getVariables())
-            })
-            .map({ $0 })
-            .sorted()
-        + [bColumn]
-        
-        let table: [[Decimal]] = (expressions + [formula.getEquation() * -1])
-            .map { expression in
-                let l = expression.left.getVariablesAndMultiplier()
-                let r = expression.right.getVariablesAndMultiplier()
-                let rn = expression.right.getNumbers()
-                assert(rn.count == 1)
-                let vals = l.merging(r) { (current, _) in current }
-                return columns.map { column in
-                    if let v = vals[column] {
-                        return v
-                    } else {
-                        if column == bColumn {
-                            return rn.first!
-                        } else {
-                            return .zero
-                        }
-                    }
-                }
-            }
-        
-        print("Expressions:")
-        print(expressions)
-        print("Rows:")
-        print(rows)
-        print("Columns:")
-        print(columns)
-        print("Table:")
-        print(table)
-        
-        self.init(
-            columns: columns,
-            bColumn: bColumn,
-            rows: rows,
-            zRow: zRow,
-            table: table,
-            goal: goal,
-            variablesForAnswer: formula.getVariables() + [zRow]
-        )
-        
-    }
-    
-    public func pivot() throws(SimplexError) -> Tableau {
         let focusColumnIndex: Int?
         let focusRowIndex: Int?
-        // проверка отрицательных значений в конце
+        
         if let index = rows.firstIndex(where: { variable in variable == nil }) {
             focusRowIndex = index
-            focusColumnIndex = columns.firstIndex(where: { variable in
-                self.rows.firstIndex(of: variable) == nil
-            })
+            focusColumnIndex = table[index].firstIndex(where: { $0.isZero == false })
         } else if table.contains(where: { decimals in decimals.last! < .zero }) {
+            // проверка отрицательных значений в конце
             focusRowIndex = table[0..<table.count-1].enumerated().min(by: { $0.element.last! < $1.element.last! }).map(\.offset)
             guard let focusRowIndex else {
                 throw SimplexError.cantFindSolution
@@ -138,13 +73,17 @@ public struct Tableau { //}: Tableau {
                     return abs(tableLastRow[l.offset] / l.element) < abs(tableLastRow[r.offset] / r.element)
                 })
                 .map(\.offset)
-        } else {
-            let lastRow = table.last!
-            // search minimal negative value
-            focusColumnIndex = lastRow.enumerated().min(by: { $0.element < $1.element }).map(\.offset)
+        } else if let lastRow = table.last,
+            let _focusColumnIndex = lastRow
+            .enumerated()
+            .min(by: { $0.element < $1.element })
+            .map(\.offset) {
+                focusColumnIndex = _focusColumnIndex
+            
             guard let focusColumnIndex else {
                 throw SimplexError.cantFindSolution
             }
+            
             focusRowIndex = table[0..<table.count-1]
                 .lazy
                 .enumerated()
@@ -160,6 +99,9 @@ public struct Tableau { //}: Tableau {
                     return l.value < r.value
                 })?.offset
         }
+        else {
+            throw SimplexError.cantFindSolution
+        }
         
         guard let focusColumnIndex else {
             throw SimplexError.cantFindSolution
@@ -173,7 +115,6 @@ public struct Tableau { //}: Tableau {
         var rows = self.rows
         rows[focusRowIndex] = columns[focusColumnIndex]
         
-        var table = self.table
         table[focusRowIndex] = table[focusRowIndex].map({ $0 / focusElement })
         let focusRow = table[focusRowIndex]
         table = table.enumerated().map({ (index, row) in
@@ -190,6 +131,9 @@ public struct Tableau { //}: Tableau {
                 return result
             })
         })
+#if DEBUG
+        print("Focus: \(focusRowIndex), \(focusColumnIndex)")
+#endif
         
         return Tableau(
             columns: self.columns,
@@ -202,11 +146,11 @@ public struct Tableau { //}: Tableau {
         )
     }
     
-    public func hasAnswer() -> Bool {
+    func hasAnswer() -> Bool {
         return goal == .min ? hasAnswerMin() : hasAnswerMax()
     }
     
-    public func answer() -> Solution? {
+    func answer() -> Solution? {
         guard hasAnswer() else { return nil }
         
         return goal == .min ? answerMin() : answerMax()

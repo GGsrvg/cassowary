@@ -12,7 +12,7 @@ final class Tests: XCTestCase {
     func test1() {
         // https://math.libretexts.org/Bookshelves/Applied_Mathematics/Applied_Finite_Mathematics_(Sekhon_and_Bloom)/04%3A_Linear_Programming_The_Simplex_Method/4.02%3A_Maximization_By_The_Simplex_Method/4.2.01%3A_Maximization_By_The_Simplex_Method_(Exercises)
         // 1
-        let t = Tableau(
+        let s = Simplex(
             formula: .plus([
                 .variable(multiplier: 1, x1),
                 .variable(multiplier: 2, x2),
@@ -37,20 +37,23 @@ final class Tests: XCTestCase {
                     relation: .lessOrEqual,
                     right: .number(18)
                 ),
-            ]
-        )
-        let s = Simplex(tableau: t)
-        let answer = try? s.solve()
-        let solution = Solution(objective: 27, constraints: [x1:0, x2: 9, x3: 3])
-        print("Solution: ans = \(answer!)")
-        print("Answer is correct: \(answer == solution)")
-        XCTAssert(answer == solution)
+            ])
+        do {
+            let answer = try s.solve()
+            let solution = Solution(objective: 27, constraints: [x1:0, x2: 9, x3: 3])
+            print("Solution: ans = \(answer)")
+            print("Answer is correct: \(answer == solution)")
+            XCTAssert(answer == solution)
+        } catch {
+            print("Error: \(error)")
+            XCTFail("Error: \(error)")
+        }
     }
     
     func test2() {
         //  https://math.libretexts.org/Bookshelves/Applied_Mathematics/Applied_Finite_Mathematics_(Sekhon_and_Bloom)/04%3A_Linear_Programming_The_Simplex_Method/4.02%3A_Maximization_By_The_Simplex_Method/4.2.01%3A_Maximization_By_The_Simplex_Method_(Exercises)
         // 2
-        let t = Tableau(
+        let s = Simplex(
             formula: .plus([
                 .variable(multiplier: 1, x1),
                 .variable(multiplier: 2, x2),
@@ -81,12 +84,10 @@ final class Tests: XCTestCase {
                     relation: .lessOrEqual,
                     right: .number(5)
                 ),
-            ]
-        )
-        let s = Simplex(tableau: t)
-        let answer = try? s.solve()
+            ])
+        let answer = try! s.solve()
         let solution = Solution(objective: 7, constraints: [x1: 0, x2: 3, x3: 1])
-        print("Solution: ans = \(answer!)")
+        print("Solution: ans = \(answer)")
         print("Answer is correct: \(answer == solution)")
         XCTAssert(answer == solution)
     }
@@ -95,7 +96,7 @@ final class Tests: XCTestCase {
         /// НЕ ИМЕЕТ РЕШЕНИЯ
         // https://portal.abuad.edu.ng/lecturer/documents/1586166095Linear_Programming.pdf
         // 33
-        let t = Tableau(
+        let s = Simplex(
             formula: .plus([
                 .variable(multiplier: 1, x1),
                 .variable(multiplier: 2, x2),
@@ -117,9 +118,7 @@ final class Tests: XCTestCase {
                     relation: .lessOrEqual,
                     right: .number(4)
                 ),
-            ]
-        )
-        let s = Simplex(tableau: t)
+            ])
         do {
             let answer = try s.solve()
             let solution = Solution(objective: 11, constraints: [x1: 0, x2: 3, x3: 1])
@@ -135,7 +134,7 @@ final class Tests: XCTestCase {
     func test4() {
         // https://faculty.ksu.edu.sa/sites/default/files/exercises_4_or122-simplex_method.pdf
         // 1
-        let t = Tableau(
+        let s = Simplex(
             formula: .plus([
                 .variable(multiplier: 3, x1),
                 .variable(multiplier: 4, x2),
@@ -157,12 +156,10 @@ final class Tests: XCTestCase {
                     relation: .lessOrEqual,
                     right: .number(110)
                 ),
-            ]
-        )
-        let s = Simplex(tableau: t)
-        let answer = try? s.solve()
+            ])
+        let answer = try! s.solve()
         let solution = Solution(objective: 96, constraints: [x1: 8, x2: 18])
-        print("Solution: ans = \(answer!)")
+        print("Solution: ans = \(answer)")
         print("Answer is correct: \(answer == solution)")
         XCTAssert(answer == solution)
     }
@@ -170,7 +167,7 @@ final class Tests: XCTestCase {
     func test5() {
         // http://edshare.soton.ac.uk/2458/1/MA230exam98_1.pdf
         // a
-        let t = Tableau(
+        let s = Simplex(
             formula: .plus([
                 .variable(multiplier: -2, x1),
                 .variable(multiplier: 7, x2),
@@ -203,19 +200,17 @@ final class Tests: XCTestCase {
                     relation: .greaterOrEqual,
                     right: .number(33)
                 ),
-            ]
-        )
-        let s = Simplex(tableau: t)
-        let answer = try? s.solve()
+            ])
+        let answer = try! s.solve()
         let solution = Solution(objective: 39, constraints: [x1: 13, x2: 3, x3: 11])
-        print("Solution: ans = \(answer!)")
+        print("Solution: ans = \(answer)")
         print("Answer is correct: \(answer == solution)")
         XCTAssert(answer == solution)
     }
     
     func test6() {
         ///https://www.youtube.com/watch?v=XwORAaG3ZmI&list=PL3pwgz7R-DSGi9K3jnXj-NmnkmIx0Vg5P&index=9
-        let t = Tableau(
+        let s = Simplex(
             formula: .plus([
                 .variable(multiplier: 5, x1),
                 .variable(multiplier: -6, x2),
@@ -262,19 +257,17 @@ final class Tests: XCTestCase {
                     relation: .equal,
                     right: .number(-8)
                 ),
-            ]
-        )
-        let s = Simplex(tableau: t)
-        let answer = try? s.solve()
+            ])
+        let answer = try! s.solve()
         let solution = Solution(objective: 11, constraints: [x1: 3, x2: 4, x3: 5, x4: 0, x5: 0, x6: 0])
-        print("Solution: ans = \(answer!)")
+        print("Solution: ans = \(answer)")
         print("Answer is correct: \(answer == solution)")
         XCTAssert(answer == solution)
     }
     
     func test7() {
         ///https://www.youtube.com/watch?v=XwORAaG3ZmI&list=PL3pwgz7R-DSGi9K3jnXj-NmnkmIx0Vg5P&index=8
-        let t = Tableau(
+        let s = Simplex(
             formula: .plus([
                 .variable(multiplier: 2, x1),
                 .variable(multiplier: -7, x2),
@@ -309,19 +302,17 @@ final class Tests: XCTestCase {
                     relation: .greaterOrEqual,
                     right: .number(300)
                 ),
-            ]
-        )
-        let s = Simplex(tableau: t)
-        let answer = try? s.solve()
+            ])
+        let answer = try! s.solve()
         let solution = Solution(objective: -670, constraints: [x1: 0, x2: 25, x3: 55])
-        print("Solution: ans = \(answer!)")
+        print("Solution: ans = \(answer)")
         print("Answer is correct: \(answer == solution)")
         XCTAssert(answer == solution)
     }
     
     func test8() {
         ///https://www.youtube.com/watch?v=e66z38cWD-w&list=PL3pwgz7R-DSGi9K3jnXj-NmnkmIx0Vg5P&index=7
-        let t = Tableau(
+        let s = Simplex(
             formula: .plus([
                 .variable(multiplier: -1, x1),
                 .variable(multiplier: 8, x2),
@@ -356,16 +347,84 @@ final class Tests: XCTestCase {
                     relation: .greaterOrEqual,
                     right: .number(4)
                 ),
-            ]
-        )
-        let s = Simplex(tableau: t)
+            ])
         var answer: Solution?
         measure {
-            answer = try? s.solve()
+            answer = try! s.solve()
         }
         let solution = Solution(objective: 14, constraints: [x1: 2, x2: 2, x3: 0])
         print("Solution: ans = \(answer!)")
         print("Answer is correct: \(answer == solution)")
         XCTAssert(answer == solution)
+    }
+    
+    func test9() {
+        let s = Simplex(
+            formula: 1 * x1 + 1 * x2 + 1 * x3 + 1 * x4 + 1 * x5 + 1 * x6 + 1 * x7 + 1 * x8,
+            goal: .max,
+            equations: [
+                .init(
+                    left: 1 * x1 + 1 * x5,
+                    relation: .equal,
+                    right: .number(14)
+                ),
+                .init(
+                    left: -1 * x2 + 1 * x6,
+                    relation: .equal,
+                    right: .number(14)
+                ),
+                .init(
+                    left: 1 * x3 + 1 * x7,
+                    relation: .equal,
+                    right: .number(10)
+                ),
+                .init(
+                    left: -1 * x4 + 1 * x8,
+                    relation: .equal,
+                    right: .number(90)
+                ),
+                .init(
+                    left: 1 * x5,
+                    relation: .equal,
+                    right: .number(0)
+                ),
+                .init(
+                    left: 1 * x7,
+                    relation: .equal,
+                    right: .number(0)
+                ),
+                .init(
+                    left: 1 * x6,
+                    relation: .equal,
+                    right: .number(200)
+                ),
+                .init(
+                    left: 1 * x8,
+                    relation: .equal,
+                    right: .number(800)
+                ),
+            ])
+        do {
+            let answer = try s.solve()
+            let solution = Solution(
+                objective: 1920,
+                constraints: [
+                    x1: 14,
+                    x2: 186,
+                    x3: 10,
+                    x4: 710,
+                    x5: 0,
+                    x6: 200,
+                    x7: 0,
+                    x8: 800
+                ]
+            )
+            print("Solution: ans = \(answer)")
+            print("Answer is correct: \(answer == solution)")
+            XCTAssert(answer == solution)
+        } catch {
+            print("Error: \(error)")
+            XCTFail("Error: \(error)")
+        }
     }
 }

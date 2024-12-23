@@ -14,7 +14,6 @@
 		5B665A052CDBAAA800945A82 /* Relation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFF27502CCBBA1C00DF6B27 /* Relation.swift */; };
 		5B665A072CDBAAA800945A82 /* Variable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFF274C2CCBB91200DF6B27 /* Variable.swift */; };
 		5B665A082CDBAAA800945A82 /* Equation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFF274E2CCBB92400DF6B27 /* Equation.swift */; };
-		5B665A092CDBAAA800945A82 /* Expression+Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFF27612CD3DD2A00DF6B27 /* Expression+Operator.swift */; };
 		5B665A0A2CDBAAA800945A82 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFF27522CCBBB6D00DF6B27 /* Expression.swift */; };
 		5B665A0C2CDBAADA00945A82 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B665A0B2CDBAADA00945A82 /* Tests.swift */; };
 		5B665A102CE3BFFB00945A82 /* Tableau.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B665A0F2CE3BFFB00945A82 /* Tableau.swift */; };
@@ -83,7 +82,6 @@
 		5BFF274E2CCBB92400DF6B27 /* Equation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equation.swift; sourceTree = "<group>"; };
 		5BFF27502CCBBA1C00DF6B27 /* Relation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relation.swift; sourceTree = "<group>"; };
 		5BFF27522CCBBB6D00DF6B27 /* Expression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
-		5BFF27612CD3DD2A00DF6B27 /* Expression+Operator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Expression+Operator.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,7 +117,6 @@
 				5B6659F12CDBAA9D00945A82 /* simplex_kit.h */,
 				5BFF274E2CCBB92400DF6B27 /* Equation.swift */,
 				5BFF27522CCBBB6D00DF6B27 /* Expression.swift */,
-				5BFF27612CD3DD2A00DF6B27 /* Expression+Operator.swift */,
 				5B8F30D22CED1EF4000CE9B4 /* Goal.swift */,
 				5BFF27502CCBBA1C00DF6B27 /* Relation.swift */,
 				5BFF27472CCBB6CB00DF6B27 /* Simplex.swift */,
@@ -309,7 +306,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B665A042CDBAAA800945A82 /* Simplex.swift in Sources */,
-				5B665A092CDBAAA800945A82 /* Expression+Operator.swift in Sources */,
 				5B665A102CE3BFFB00945A82 /* Tableau.swift in Sources */,
 				5B8F30DF2CFF4CF9000CE9B4 /* SimplexError.swift in Sources */,
 				5B8F30DD2CF79145000CE9B4 /* Solution.swift in Sources */,
