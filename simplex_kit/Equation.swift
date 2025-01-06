@@ -18,12 +18,6 @@ public struct Equation {
         self.right = right
     }
     
-    public init(expression: Expression) {
-        self.left = expression.optimize()
-        self.relation = .equal
-        self.right = expression
-    }
-    
     func canonical(i: Int? = nil) -> (Equation, Variable?) {
         switch relation {
         case .equal:

@@ -32,10 +32,6 @@ public struct Variable: Hashable, Comparable {
         return variable * Decimal(multiplier)
     }
     
-    static public func * (variable: Variable, multiplier: Float) -> Expression {
-        return variable * Decimal(Double(multiplier))
-    }
-    
     static public func * (variable: Variable, multiplier: Double) -> Expression {
         return variable * Decimal(multiplier)
     }
@@ -46,10 +42,6 @@ public struct Variable: Hashable, Comparable {
     
     static public func * (multiplier: Int, variable: Variable) -> Expression {
         return variable * Decimal(multiplier)
-    }
-    
-    static public func * (multiplier: Float, variable: Variable) -> Expression {
-        return variable * Decimal(Double(multiplier))
     }
     
     static public func * (multiplier: Double, variable: Variable) -> Expression {

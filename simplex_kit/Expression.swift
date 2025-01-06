@@ -113,6 +113,33 @@ public enum Expression {
             return .plus(expressions.map { $0 * r }).optimize()
         }
     }
+    
+    static public func * (l: Decimal, r: Expression) -> Expression {
+        switch r {
+        case let .number(decimal):
+            return .number(decimal * l)
+        case let .variable(multiplier: multiplier, variable):
+           return .variable(multiplier: multiplier * l, variable)
+        case let .plus(expressions):
+            return .plus(expressions.map { $0 * l }).optimize()
+        }
+    }
+    
+    static public func * (l: Expression, r: Int) -> Expression {
+        return l * Decimal(r)
+    }
+    
+    static public func * (l: Expression, r: Double) -> Expression {
+        return l * Decimal(r)
+    }
+    
+    static public func * (l: Int, r: Expression) -> Expression {
+        return r * Decimal(l)
+    }
+    
+    static public func * (l: Double, r: Expression) -> Expression {
+        return r * Decimal(l)
+    }
 }
 
 extension Expression: CustomStringConvertible {

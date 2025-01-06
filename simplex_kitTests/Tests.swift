@@ -364,22 +364,22 @@ final class Tests: XCTestCase {
             goal: .max,
             equations: [
                 .init(
-                    left: 1 * x1 + 1 * x5,
+                    left: 1 * x1 + -1 * x5,
                     relation: .equal,
                     right: .number(14)
                 ),
                 .init(
-                    left: -1 * x2 + 1 * x6,
+                    left: -1 * x2 + 1 * x6,// + -1 * x5,
                     relation: .equal,
                     right: .number(14)
                 ),
                 .init(
-                    left: 1 * x3 + 1 * x7,
+                    left: 1 * x3 + -1 * x7,
                     relation: .equal,
                     right: .number(10)
                 ),
                 .init(
-                    left: -1 * x4 + 1 * x8,
+                    left: -1 * x4 + 1 * x8,// + -1 * x7,
                     relation: .equal,
                     right: .number(90)
                 ),
@@ -394,12 +394,12 @@ final class Tests: XCTestCase {
                     right: .number(0)
                 ),
                 .init(
-                    left: 1 * x6,
+                    left: 1 * x6 + -1 * x5,
                     relation: .equal,
                     right: .number(200)
                 ),
                 .init(
-                    left: 1 * x8,
+                    left: 1 * x8 + 1 * x7,
                     relation: .equal,
                     right: .number(800)
                 ),
@@ -425,6 +425,118 @@ final class Tests: XCTestCase {
         } catch {
             print("Error: \(error)")
             XCTFail("Error: \(error)")
+        }
+    }
+    
+    /*
+     v1 - x1..x4
+     v2 - x5..x8
+     v3 - x9..x12
+
+     v1_left   - x1
+     v1_right  - x2
+     v1_top    - x3
+     v1_bottom - x4
+     v2_left   - x5
+     v2_right  - x6
+     v2_top    - x7
+     v2_bottom - x8
+     v3_left   - x9
+     v3_right  - x10
+     v3_top    - x11
+     v3_bottom - x12
+
+     v3 contains v2, v2 contains v1
+
+     v3 frame (0, 0, 100, 100)
+     v2 margins (10, 10, 10, 10)
+     v1 margins (12, 12, 12, 12)
+     */
+    /*
+     left: -1 * x10 + 1 * x6, relation: .equal, right: .number(12)
+     as like
+     v2.right.constraint(to: v3.right, constant: 12) =>
+     v2_right = multiplier * v3_right + constant =>
+     v2_right - multiplier * v3_right = constant =>
+     - multiplier * v3_right + v2_right = constant =>
+     (-1 * multiplier) * v3_right + v2_right = constant =>
+     */
+    func test10() {
+        let s = Simplex(
+            formula: 1 * x1 + 1 * x2 + 1 * x3 + 1 * x4
+                + 1 * x5 + 1 * x6 + 1 * x7 + 1 * x8
+                + 1 * x9 + 1 * x10 + 1 * x11 + 1 * x12,
+            goal: .max,
+            equations: [
+                // v3
+                .init(
+                    left: 1 * x9 + -1 * x5, relation: .equal, right: .number(12)
+                ),
+                .init(
+                    left: -1 * x10 + 1 * x6, relation: .equal, right: .number(12)
+                ),
+                .init(
+                    left: 1 * x11 + -1 * x7, relation: .equal, right: .number(12)
+                ),
+                .init(
+                    left: -1 * x12 + 1 * x8, relation: .equal, right: .number(12)
+                ),
+                // v2
+                .init(
+                    left: 1 * x5 + -1 * x1, relation: .equal, right: .number(10)
+                ),
+                .init(
+                    left: -1 * x6 + 1 * x2, relation: .equal, right: .number(10)
+                ),
+                .init(
+                    left: 1 * x7 + -1 * x3, relation: .equal, right: .number(10)
+                ),
+                .init(
+                    left: -1 * x8 + 1 * x4, relation: .equal, right: .number(10)
+                ),
+                // v1
+                .init(
+                    left: 1 * x1, relation: .equal, right: .number(0)
+                ),
+                .init(
+                    left: 1 * x3, relation: .equal, right: .number(0)
+                ),
+                .init(
+                    left: 1 * x2 + -1 * x1, relation: .equal,
+                    right: .number(100)
+                ),
+                .init(
+                    left: 1 * x4 + -1 * x3, relation: .equal,
+                    right: .number(100)
+                ),
+            ])
+        measure {
+            do {
+                let answer = try s.solve()
+                let solution = Solution(
+                    objective: 600,
+                    constraints: [
+                        x1:     0,
+                        x2:     100,
+                        x3:     0,
+                        x4:     100,
+                        x5:     10,
+                        x6:     90,
+                        x7:     10,
+                        x8:     90,
+                        x9:     22,
+                        x10:    78,
+                        x11:    22,
+                        x12:    78,
+                    ]
+                )
+                print("Solution: ans = \(answer)")
+                print("Answer is correct: \(answer == solution)")
+                XCTAssert(answer == solution)
+            } catch {
+                print("Error: \(error)")
+                XCTFail("Error: \(error)")
+            }
         }
     }
 }

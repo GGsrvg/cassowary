@@ -171,10 +171,10 @@ struct Tableau {
     
     func answerMin() -> Solution? {
         var result = self.variablesForAnswer
-            .reduce([Variable:Float]()) { (result, variable) in
+            .reduce([Variable: Double]()) { (result, variable) in
                 var result = result
                 if let rowIndex = rows.firstIndex(of: variable) {
-                    result[variable] = NSDecimalNumber(decimal: table[rowIndex].last!).floatValue
+                    result[variable] = NSDecimalNumber(decimal: table[rowIndex].last!).doubleValue
                 } else {
                     result[variable] = .zero
                 }
@@ -203,10 +203,10 @@ struct Tableau {
     
     func answerMax() -> Solution? {
         var result = self.variablesForAnswer
-            .reduce([Variable:Float]()) { (result, variable) in
+            .reduce([Variable: Double]()) { (result, variable) in
                 var result = result
                 if let rowIndex = rows.firstIndex(of: variable) {
-                    result[variable] = NSDecimalNumber(decimal: table[rowIndex].last!).floatValue
+                    result[variable] = NSDecimalNumber(decimal: table[rowIndex].last!).doubleValue
                 } else {
                     result[variable] = .zero
                 }

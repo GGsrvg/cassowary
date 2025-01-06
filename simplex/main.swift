@@ -7,78 +7,26 @@
 
 import Foundation
 import simplex_kit
+import cassowary
+import AppKit
 
-let x1 = Variable(tag: "x1")
-let x2 = Variable(tag: "x2")
-let x3 = Variable(tag: "x3")
-let x4 = Variable(tag: "x4")
-let x5 = Variable(tag: "x5")
-let x6 = Variable(tag: "x6")
-let x7 = Variable(tag: "x7")
-let x8 = Variable(tag: "x8")
+let v1 = NSView()
+let v2 = NSView()
+v1.addSubview(v2)
 
-let s3 = Simplex(
-    formula: 1 * x1 + 1 * x2 + 1 * x3 + 1 * x4 + 1 * x5 + 1 * x6 + 1 * x7 + 1 * x8,
-    goal: .max,
-    equations: [
-        .init(
-            left: 1 * x1 + 1 * x5,
-            relation: .equal,
-            right: .number(14)
-        ),
-        .init(
-            left: -1 * x2 + 1 * x6,
-            relation: .equal,
-            right: .number(14)
-        ),
-        .init(
-            left: 1 * x3 + 1 * x7,
-            relation: .equal,
-            right: .number(10)
-        ),
-        .init(
-            left: -1 * x4 + 1 * x8,
-            relation: .equal,
-            right: .number(90)
-        ),
-        .init(
-            left: 1 * x5,
-            relation: .equal,
-            right: .number(0)
-        ),
-        .init(
-            left: 1 * x7,
-            relation: .equal,
-            right: .number(0)
-        ),
-        .init(
-            left: 1 * x6,
-            relation: .equal,
-            right: .number(200)
-        ),
-        .init(
-            left: 1 * x8,
-            relation: .equal,
-            right: .number(800)
-        ),
-    ])
-let solution = Solution(
-    objective: 1920,
+let manager = ConstraintManager(
     constraints: [
-        x1: 14,
-        x2: 186,
-        x3: 10,
-        x4: 710,
-        x5: 0,
-        x6: 200,
-        x7: 0,
-        x8: 800
+        .init(from: v2.leftAttribute, is: .equal, to: v1.leftAttribute, constant: 14),
+        .init(from: v2.rightAttribute, is: .equal, to: v1.rightAttribute, constant: 14),
+        .init(from: v2.topAttribute, is: .equal, to: v1.topAttribute, constant: 10),
+        .init(from: v2.bottomAttribute, is: .equal, to: v1.bottomAttribute, constant: 90),
+        .init(from: v1.topAttribute, is: .equal, constant: 0),
+        .init(from: v1.leftAttribute, is: .equal, constant: 0),
+        .init(from: v1.rightAttribute, is: .equal, to: v1.leftAttribute, constant: 200),
+        .init(from: v1.bottomAttribute, is: .equal, to: v1.topAttribute, constant: 800),
     ]
 )
-do {
-    let answer3 = try s3.solve()
-    print("Solution: ans = \(answer3)")
-    print("Answer is correct: \(answer3 == solution)")
-} catch {
-    print("Error: \(error)")
-}
+try! manager.solve(rootView: v1)
+
+print("V1 frame: \(v1.frame)")
+print("V2 frame: \(v2.frame)")

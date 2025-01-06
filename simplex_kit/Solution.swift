@@ -8,10 +8,10 @@
 import Foundation
 
 public struct Solution: Hashable {
-    public let objective: Float
-    public let constraints: [Variable: Float]
+    public let objective: Double
+    public let constraints: [Variable: Double]
     
-    public init(objective: Float, constraints: [Variable : Float]) {
+    public init(objective: Double, constraints: [Variable : Double]) {
         self.objective = objective
         self.constraints = constraints
     }

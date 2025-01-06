@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>cassowary.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>iOS.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 		<key>simplex.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
@@ -17,6 +27,26 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>5B6659EE2CDBAA9D00945A82</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5B6659F52CDBAA9E00945A82</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5BD5E7392D19D8360028B444</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5BD5E7402D19D8370028B444</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>5BFF273C2CCBB6B900DF6B27</key>
 		<dict>
 			<key>primary</key>
