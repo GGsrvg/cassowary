@@ -15,10 +15,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5BD5E7392D19D8360028B444"
-               BuildableName = "cassowary.framework"
-               BlueprintName = "cassowary"
-               ReferencedContainer = "container:simplex.xcodeproj">
+               BlueprintIdentifier = "5BFF273C2CCBB6B900DF6B27"
+               BuildableName = "simplex"
+               BlueprintName = "simplex"
+               ReferencedContainer = "container:cassowary.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,19 +29,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
       shouldAutocreateTestPlan = "YES">
-      <Testables>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5BD5E7402D19D8370028B444"
-               BuildableName = "cassowaryTests.xctest"
-               BlueprintName = "cassowaryTests"
-               ReferencedContainer = "container:simplex.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -52,7 +39,18 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "YES">
+      allowLocationSimulation = "YES"
+      viewDebuggingEnabled = "No">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "5BFF273C2CCBB6B900DF6B27"
+            BuildableName = "simplex"
+            BlueprintName = "simplex"
+            ReferencedContainer = "container:cassowary.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -60,15 +58,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5BD5E7392D19D8360028B444"
-            BuildableName = "cassowary.framework"
-            BlueprintName = "cassowary"
-            ReferencedContainer = "container:simplex.xcodeproj">
+            BlueprintIdentifier = "5BFF273C2CCBB6B900DF6B27"
+            BuildableName = "simplex"
+            BlueprintName = "simplex"
+            ReferencedContainer = "container:cassowary.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

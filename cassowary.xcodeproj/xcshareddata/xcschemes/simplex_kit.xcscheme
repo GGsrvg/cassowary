@@ -18,7 +18,7 @@
                BlueprintIdentifier = "5B6659EE2CDBAA9D00945A82"
                BuildableName = "simplex_kit.framework"
                BlueprintName = "simplex_kit"
-               ReferencedContainer = "container:simplex.xcodeproj">
+               ReferencedContainer = "container:cassowary.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -38,7 +38,7 @@
                BlueprintIdentifier = "5B6659F52CDBAA9E00945A82"
                BuildableName = "simplex_kitTests.xctest"
                BlueprintName = "simplex_kitTests"
-               ReferencedContainer = "container:simplex.xcodeproj">
+               ReferencedContainer = "container:cassowary.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -66,7 +66,7 @@
             BlueprintIdentifier = "5B6659EE2CDBAA9D00945A82"
             BuildableName = "simplex_kit.framework"
             BlueprintName = "simplex_kit"
-            ReferencedContainer = "container:simplex.xcodeproj">
+            ReferencedContainer = "container:cassowary.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

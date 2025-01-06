@@ -285,7 +285,7 @@
 		5BFF27342CCBB6B900DF6B27 = {
 			isa = PBXGroup;
 			children = (
-				5BFF273F2CCBB6B900DF6B27 /* simplex */,
+				5BFF273F2CCBB6B900DF6B27 /* template */,
 				5B6659F02CDBAA9D00945A82 /* simplex_kit */,
 				5B6659FA2CDBAA9E00945A82 /* simplex_kitTests */,
 				5BD5E73B2D19D8360028B444 /* cassowary */,
@@ -309,12 +309,12 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5BFF273F2CCBB6B900DF6B27 /* simplex */ = {
+		5BFF273F2CCBB6B900DF6B27 /* template */ = {
 			isa = PBXGroup;
 			children = (
 				5BFF27402CCBB6B900DF6B27 /* main.swift */,
 			);
-			path = simplex;
+			path = template;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -498,7 +498,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5BFF27382CCBB6B900DF6B27 /* Build configuration list for PBXProject "simplex" */;
+			buildConfigurationList = 5BFF27382CCBB6B900DF6B27 /* Build configuration list for PBXProject "cassowary" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -1171,7 +1171,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5BFF27382CCBB6B900DF6B27 /* Build configuration list for PBXProject "simplex" */ = {
+		5BFF27382CCBB6B900DF6B27 /* Build configuration list for PBXProject "cassowary" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5BFF27422CCBB6B900DF6B27 /* Debug */,
