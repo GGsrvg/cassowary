@@ -36,9 +36,9 @@
                                 <color key="backgroundColor" systemColor="systemRedColor"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PoG-5n-2as">
-                                <rect key="frame" x="159" y="767" width="75" height="35"/>
+                                <rect key="frame" x="166.66666666666666" y="767" width="59.666666666666657" height="35"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Next"/>
                                 <connections>
                                     <action selector="update:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QF4-d7-eN9"/>
                                 </connections>
