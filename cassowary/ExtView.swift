@@ -5,12 +5,19 @@
 //  Created by GGsrvg on 12/23/24.
 //
 
-#if os(iOS) || os(tvOS) || targetEnvironment(macCatalyst)
-import UIKit
+#if os(iOS)
+@_exported import UIKit
 public typealias View = UIView
-#elseif os(macOS)
-import AppKit
+#else
+@_exported import AppKit
 public typealias View = NSView
+public extension NSView {
+    var accessibilityIdentifier: String? {
+        get { accessibilityIdentifier() }
+        set { setAccessibilityIdentifier(newValue) }
+    }
+}
+
 #endif
 
 public extension View {

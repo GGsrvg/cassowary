@@ -7,12 +7,6 @@
 
 import simplex_kit
 
-#if os(iOS) || os(tvOS) || targetEnvironment(macCatalyst)
-import UIKit
-#elseif os(macOS) || targetEnvironment(macCatalyst)
-import AppKit
-#endif
-
 public struct ViewAttribute: Hashable {
     let view: View
     let attribute: Attribute
@@ -23,14 +17,7 @@ public struct ViewAttribute: Hashable {
     }
     
     var viewName: String {
-#if os(iOS) || os(tvOS) || targetEnvironment(macCatalyst)
         let viewName = view.accessibilityIdentifier ?? "view_\(view.hashValue)"
-#elseif os(macOS) || targetEnvironment(macCatalyst)
-        var viewName = view.accessibilityIdentifier()
-        if viewName.isEmpty {
-            viewName = "view_\(view.hashValue)"
-        }
-#endif
         return viewName
     }
     

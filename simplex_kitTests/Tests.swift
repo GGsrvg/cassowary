@@ -369,7 +369,7 @@ final class Tests: XCTestCase {
                     right: .number(14)
                 ),
                 .init(
-                    left: -1 * x2 + 1 * x6,// + -1 * x5,
+                    left: -1 * x2 + 1 * x6,
                     relation: .equal,
                     right: .number(14)
                 ),
@@ -379,7 +379,7 @@ final class Tests: XCTestCase {
                     right: .number(10)
                 ),
                 .init(
-                    left: -1 * x4 + 1 * x8,// + -1 * x7,
+                    left: -1 * x4 + 1 * x8,
                     relation: .equal,
                     right: .number(90)
                 ),

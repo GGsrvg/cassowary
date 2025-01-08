@@ -18,7 +18,6 @@ public class ConstraintManager {
     
     public func solve(rootView: View) throws {
         let allView: Set<ViewAttribute> = constraints.reduce(Set<ViewAttribute>()) {
-//            $0 + $1.firstAttribute.variable
             return $0.union([$1.firstAttribute, $1.secondAttribute].compactMap{$0})
         }
         let allVariable: Set<Variable> = allView.reduce(Set<Variable>()) {
@@ -29,24 +28,12 @@ public class ConstraintManager {
         })
         let equations = constraints.map { $0.getEquation() }
         
-        print("==============================")
-        print("Formula: \(formula)")
-        print("Equations: \(equations)")
-        print("==============================")
-        
         let simplex = Simplex(
             formula: formula,
             goal: .max,
             equations: equations
         )
         let solve = try! simplex.solve()
-        print("Solve: \(solve)")
-//        allView.forEach { view in
-//            let variable = view.variable
-//            let size = solve.constraints[variable] ?? 0
-//            print("\(variable): \(size)")
-//            view.apply(Double(size)) 
-//        }
         
         applyRect(for: rootView, solution: solve)
     }
@@ -77,9 +64,6 @@ public class ConstraintManager {
             relativeFrame = absoluteFrame
         }
         view.frame = relativeFrame
-        
-        print("\(view.accessibilityIdentifier): absoluteFrame: \(absoluteFrame)")
-        print("\(view.accessibilityIdentifier): relativeFrame: \(relativeFrame)")
         
         // defer
         view.subviews.forEach { applyRect(for: $0, solution: solution) }

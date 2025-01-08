@@ -14,24 +14,8 @@
             filePath = "cassowary/ConstraintManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "solve(rootView:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A3B1E590-A26C-416D-B814-C3D628DD1C08"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "cassowary/ConstraintManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
             landmarkName = "solve(rootView:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,8 +30,8 @@
             filePath = "cassowary/ConstraintManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
             landmarkName = "solve(rootView:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -65,22 +49,6 @@
             startingLineNumber = "512"
             endingLineNumber = "512"
             landmarkName = "test10()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "5DA6EC3C-FF1A-4125-AECB-7F140A03D024"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "cassowary/ConstraintManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "solve(rootView:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -146,7 +146,7 @@
 		5BD5E73A2D19D8360028B444 /* cassowary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = cassowary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD5E7412D19D8370028B444 /* cassowaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cassowaryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD5E7692D1BD7AA0028B444 /* iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5BFF273D2CCBB6B900DF6B27 /* simplex */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = simplex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BFF273D2CCBB6B900DF6B27 /* template */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = template; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BFF27402CCBB6B900DF6B27 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		5BFF27472CCBB6CB00DF6B27 /* Simplex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simplex.swift; sourceTree = "<group>"; };
 		5BFF274C2CCBB91200DF6B27 /* Variable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variable.swift; sourceTree = "<group>"; };
@@ -299,7 +299,7 @@
 		5BFF273E2CCBB6B900DF6B27 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5BFF273D2CCBB6B900DF6B27 /* simplex */,
+				5BFF273D2CCBB6B900DF6B27 /* template */,
 				5B6659EF2CDBAA9D00945A82 /* simplex_kit.framework */,
 				5B6659F62CDBAA9E00945A82 /* simplex_kitTests.xctest */,
 				5BD5E73A2D19D8360028B444 /* cassowary.framework */,
@@ -447,9 +447,9 @@
 			productReference = 5BD5E7692D1BD7AA0028B444 /* iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		5BFF273C2CCBB6B900DF6B27 /* simplex */ = {
+		5BFF273C2CCBB6B900DF6B27 /* template */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5BFF27442CCBB6B900DF6B27 /* Build configuration list for PBXNativeTarget "simplex" */;
+			buildConfigurationList = 5BFF27442CCBB6B900DF6B27 /* Build configuration list for PBXNativeTarget "template" */;
 			buildPhases = (
 				5BFF27392CCBB6B900DF6B27 /* Sources */,
 				5BFF273A2CCBB6B900DF6B27 /* Frameworks */,
@@ -462,9 +462,9 @@
 				5B8F30D02CEB840E000CE9B4 /* PBXTargetDependency */,
 				5BD5E7582D19D98D0028B444 /* PBXTargetDependency */,
 			);
-			name = simplex;
+			name = template;
 			productName = simplex;
-			productReference = 5BFF273D2CCBB6B900DF6B27 /* simplex */;
+			productReference = 5BFF273D2CCBB6B900DF6B27 /* template */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -511,7 +511,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5BFF273C2CCBB6B900DF6B27 /* simplex */,
+				5BFF273C2CCBB6B900DF6B27 /* template */,
 				5B6659EE2CDBAA9D00945A82 /* simplex_kit */,
 				5B6659F52CDBAA9E00945A82 /* simplex_kitTests */,
 				5BD5E7392D19D8360028B444 /* cassowary */,
@@ -1180,7 +1180,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5BFF27442CCBB6B900DF6B27 /* Build configuration list for PBXNativeTarget "simplex" */ = {
+		5BFF27442CCBB6B900DF6B27 /* Build configuration list for PBXNativeTarget "template" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5BFF27452CCBB6B900DF6B27 /* Debug */,

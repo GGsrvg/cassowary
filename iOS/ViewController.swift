@@ -139,11 +139,17 @@ class ViewController: UIViewController {
         let manager = ConstraintManager(
             constraints: [
                 .init(
-                    from: v2.centerXAttribute, is: .equal,
-                    to: v1.centerXAttribute, constant: 0),
+                    from: v2.centerXAttribute,
+                    is: .equal,
+                    to: v1.centerXAttribute,
+                    constant: 0
+                ),
                 .init(
-                    from: v2.centerYAttribute, is: .equal,
-                    to: v1.centerYAttribute, constant: 0),
+                    from: v2.centerYAttribute,
+                    is: .equal,
+                    to: v1.centerYAttribute,
+                    constant: 0
+                ),
                 .init(from: v2.widthAttribute, is: .equal, constant: 50),
                 .init(from: v2.heightAttribute, is: .equal, constant: 50),
 

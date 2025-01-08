@@ -6,21 +6,14 @@
 //
 
 import Testing
-#if os(iOS)
-import UIKit
-typealias View = UIView 
-#else
-import AppKit
-typealias View = NSView
-#endif
 @testable import cassowary
 
 @Suite struct cassowaryTests {
 
     @MainActor
     @Test func example() throws {
-        let v1 = UIView()
-        let v2 = UIView()
+        let v1 = View()
+        let v2 = View()
         v1.accessibilityIdentifier = "x1"
         v2.accessibilityIdentifier = "x2"
         

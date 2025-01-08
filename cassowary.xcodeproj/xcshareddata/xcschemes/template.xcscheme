@@ -16,8 +16,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5BFF273C2CCBB6B900DF6B27"
-               BuildableName = "simplex"
-               BlueprintName = "simplex"
+               BuildableName = "template"
+               BlueprintName = "template"
                ReferencedContainer = "container:cassowary.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,8 +46,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5BFF273C2CCBB6B900DF6B27"
-            BuildableName = "simplex"
-            BlueprintName = "simplex"
+            BuildableName = "template"
+            BlueprintName = "template"
             ReferencedContainer = "container:cassowary.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -63,8 +63,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5BFF273C2CCBB6B900DF6B27"
-            BuildableName = "simplex"
-            BlueprintName = "simplex"
+            BuildableName = "template"
+            BlueprintName = "template"
             ReferencedContainer = "container:cassowary.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
