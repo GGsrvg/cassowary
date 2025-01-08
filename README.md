@@ -6,7 +6,7 @@ Cassowary is a linear constraint solving algorithm that helps solve layout probl
 
 ## Sample
 
-<video src="sample.mp4" height="600" controls></video>
+<video src="sample.mp4" height="600"/>
 
 ## Aknowledgements
 
