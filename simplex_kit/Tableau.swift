@@ -157,30 +157,31 @@ struct Tableau {
     }
     
     func hasAnswerMin() -> Bool {
-        let hasAnswerMin = table.enumerated().allSatisfy { rows in
-            if rows.offset == table.count - 1 {
-                return rows.element[0..<rows.element.count-1].allSatisfy({
-                    return $0 <= 1e-20
-                })
+        let lastIndex = table.count - 1
+        for i in 0..<lastIndex {
+            if table[i].last! < 1e-20 {
+                return false
             }
-            
-            return rows.element.last! >= 1e-20
         }
-        return hasAnswerMin
+        let lastRow = table[lastIndex]
+        return lastRow[..<(lastRow.count - 1)].allSatisfy { $0 <= 1e-20 }
     }
     
     func answerMin() -> Solution? {
-        var result = self.variablesForAnswer
-            .reduce([Variable: Double]()) { (result, variable) in
-                var result = result
-                if let rowIndex = rows.firstIndex(of: variable) {
-                    result[variable] = NSDecimalNumber(decimal: table[rowIndex].last!).doubleValue
-                } else {
-                    result[variable] = .zero
-                }
-                return result
+        var result = [Variable: Double]()
+            
+        for variable in self.variablesForAnswer {
+            if let rowIndex = rows.firstIndex(of: variable) {
+                let dbl = NSDecimalNumber(decimal: table[rowIndex].last!).doubleValue
+                result[variable] = Double(round(1000 * dbl) / 1000)
+            } else {
+                result[variable] = .zero
             }
-        let objective = result.removeValue(forKey: zRow)!
+        }
+        
+        guard let objective = result.removeValue(forKey: zRow) else {
+            return nil
+        }
         
         return Solution(
             objective: objective,
@@ -189,30 +190,31 @@ struct Tableau {
     }
     
     func hasAnswerMax() -> Bool {
-        let result = table.enumerated().allSatisfy { rows in
-            if rows.offset == table.count - 1 {
-                return rows.element[0..<rows.element.count-1].allSatisfy({
-                    return $0 >= -1e-20
-                })
+        let lastIndex = table.count - 1
+        for i in 0..<lastIndex {
+            if table[i].last! < -1e-20 {
+                return false
             }
-            
-            return rows.element.last! >= -1e-20
         }
-        return result
+        let lastRow = table[lastIndex]
+        return lastRow[..<(lastRow.count - 1)].allSatisfy { $0 >= -1e-20 }
     }
     
     func answerMax() -> Solution? {
-        var result = self.variablesForAnswer
-            .reduce([Variable: Double]()) { (result, variable) in
-                var result = result
-                if let rowIndex = rows.firstIndex(of: variable) {
-                    result[variable] = NSDecimalNumber(decimal: table[rowIndex].last!).doubleValue
-                } else {
-                    result[variable] = .zero
-                }
-                return result
+        var result = [Variable: Double]()
+            
+        for variable in self.variablesForAnswer {
+            if let rowIndex = rows.firstIndex(of: variable) {
+                let dbl = NSDecimalNumber(decimal: table[rowIndex].last!).doubleValue
+                result[variable] = Double(round(1000 * dbl) / 1000)
+            } else {
+                result[variable] = .zero
             }
-        let objective = result.removeValue(forKey: zRow)!
+        }
+        
+        guard let objective = result.removeValue(forKey: zRow) else {
+            return nil
+        }
         
         return Solution(
             objective: objective,
