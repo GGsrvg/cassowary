@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum Relation {
+public enum Relation: Hashable {
     case equal
     case lessOrEqual
     case greaterOrEqual

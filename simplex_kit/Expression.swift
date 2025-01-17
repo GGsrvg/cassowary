@@ -12,7 +12,7 @@ public enum Expression {
     case variable(multiplier: Decimal, Variable)
     indirect case plus([Expression])
     
-    func optimize() -> Expression {
+    public func optimize() -> Expression {
         switch self {
         case .number:
             return self

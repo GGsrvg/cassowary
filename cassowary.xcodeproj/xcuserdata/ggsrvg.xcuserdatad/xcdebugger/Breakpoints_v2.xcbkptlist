@@ -7,23 +7,39 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4F298495-CC3C-4BCB-8CA7-257B58404868"
+            uuid = "426E60A7-9C00-4151-8B32-226E64115B04"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "cassowary/ConstraintManager.swift"
+            filePath = "simplex_kitTests/Tests.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "solve(rootView:)"
+            startingLineNumber = "512"
+            endingLineNumber = "512"
+            landmarkName = "test10()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "95A58503-46D1-427E-84A6-2A97DBACC354"
+            uuid = "F5D1FE68-8ED5-4903-BD00-E52C46A2F144"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cassowary/ViewAttribute.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "viewName"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "72B9B002-CF14-47F6-80FE-018FB97E5970"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -39,16 +55,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "426E60A7-9C00-4151-8B32-226E64115B04"
+            uuid = "E2C5E307-E7D3-4B5B-AD9B-69603373B243"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "simplex_kitTests/Tests.swift"
+            filePath = "cassowary/ConstraintManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "512"
-            endingLineNumber = "512"
-            landmarkName = "test10()"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "solve(rootView:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

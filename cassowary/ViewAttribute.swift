@@ -17,7 +17,10 @@ public struct ViewAttribute: Hashable {
     }
     
     var viewName: String {
-        let viewName = view.accessibilityIdentifier ?? "view_\(view.hashValue)"
+        var viewName = view.accessibilityIdentifier ?? "view_\(view.hashValue)"
+        if viewName.isEmpty {
+            viewName = "view_\(view.hashValue)"
+        }
         return viewName
     }
     

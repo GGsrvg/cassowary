@@ -10,8 +10,8 @@ import simplex_kit
 import cassowary
 import AppKit
 
-let v1 = NSView()
-let v2 = NSView()
+let v1 = View()
+let v2 = View()
 v1.addSubview(v2)
 
 let manager = ConstraintManager(

@@ -17,15 +17,24 @@ public class ConstraintManager {
     }
     
     public func solve(rootView: View) throws {
-        let allView: Set<ViewAttribute> = constraints.reduce(Set<ViewAttribute>()) {
-            return $0.union([$1.firstAttribute, $1.secondAttribute].compactMap{$0})
-        }
-        let allVariable: Set<Variable> = allView.reduce(Set<Variable>()) {
-            return $0.union([$1.variable])
-        }
-        let formula = allVariable.reduce(.plus([]), {
-            $0 + .variable(multiplier: 1, $1)
+        let constraints = self.constraints
+            .lazy
+            .keepingHighestPriority()
+            .sorted(by: { $0.priority > $1.priority })
+        // TODO: optimize
+        // only one `constraints` foreach
+        let allView: Set<ViewAttribute> = Set(constraints.flatMap {
+            if let secondAttribute = $0.secondAttribute {
+                [$0.firstAttribute, secondAttribute]
+            } else {
+                [$0.firstAttribute]
+            }
         })
+        let allVariable: Set<Variable> = Set(allView.map({ $0.variable }))
+        let expressions = allVariable.map {
+            simplex_kit.Expression.variable(multiplier: 1, $0)
+        }
+        let formula = simplex_kit.Expression.plus(expressions).optimize()
         let equations = constraints.map { $0.getEquation() }
         
         let simplex = Simplex(
@@ -33,7 +42,7 @@ public class ConstraintManager {
             goal: .max,
             equations: equations
         )
-        let solve = try! simplex.solve()
+        let solve = try simplex.solve()
         
         applyRect(for: rootView, solution: solve)
     }
